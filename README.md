@@ -7,6 +7,8 @@ Podatke kot so npr. nacionalnost zmagovalca, prevoženi kilometri skupaj seštet
 povprečna hitrost zmagovalca, razlika v času med prvimi mesti, itd. Dodaten namen je tudi
 podatke predstaviti grafično, na uporabniku prijazen način.
 
+Projekt je uporaben za ljubitelje kolesarstva, s katerim si bodo lažje ogledali določene specifikacije posamezne dirke po franciji ter s tem napovedovali glavne favorite za prihajajoči Tour de France 2022.
+
 Projektna naloga je bila pripravljena pri predmetu Programiranje 2 2021-22 programa Praktična matematika na Fakulteti za Matematiko in Fiziko na Univerzi v Ljubljani.
 
 Pri projektu smo uporabljali računalniški program Python.
