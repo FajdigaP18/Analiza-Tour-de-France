@@ -20,4 +20,4 @@ Pri projektu smo uporabljali računalniški program Python.
 
 
 ## Člana razvoja projekta:
-Žiga Vlaič in Polona Fajdiga
+Žiga Valič in Polona Fajdiga
