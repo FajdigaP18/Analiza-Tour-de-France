@@ -22,7 +22,7 @@ Pri projektu smo uporabljali računalniški program Python.
 ## Člana razvoja projekta:
 Žiga Valič in Polona Fajdiga
 
-##Povezava do podatkov:
-https://www.kaggle.com/datasets/ralle360/historic-tour-de-france-dataset?select=stages_TDF.csv
-https://old.datahub.io/dataset/tour-de-france
-https://en.wikipedia.org/wiki/List_of_Tour_de_France_general_classification_winners
+## Povezava do podatkov:
+1.https://www.kaggle.com/datasets/ralle360/historic-tour-de-france-dataset?select=stages_TDF.csv
+2.https://old.datahub.io/dataset/tour-de-france
+3.https://en.wikipedia.org/wiki/List_of_Tour_de_France_general_classification_winners
