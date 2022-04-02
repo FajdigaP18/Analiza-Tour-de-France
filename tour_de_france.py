@@ -6,7 +6,7 @@ def rezultati_posamezne_dirke(leto):
     '''Funkcija izpiše slovar podatkov posamezne dirke na turu, ki je bil leta ´letno´.'''
     iskanje = 'https://www.procyclingstats.com/race/tour-de-france/' + str(leto)
     besedilo = requests.get(iskanje).text
-    if leto == 1939:
+    if leto == '1939':
         st_stagov = 26
         seznam_a_dirk = {2:2, 7:6, 10:8, 13:10, 16:12, 21:16, 23:17, 25:18}
         seznam_b_dirk = {3:2, 8:6, 11:8, 14:10, 17:12, 22:16, 24:17, 26:18}
@@ -58,6 +58,7 @@ izraz = r'data-tabs-ajax="/en/block/history/\d*/.*">\d*</button>'
 iskanje = re.findall(izraz, besedilo)
 #print(iskanje)
 # 
+# DOBIVANJE PODATKOV IZ POSAMEZNIH DIRK
 #letnica = []
 slovar_dirk = {}
 for tour in iskanje:
@@ -74,4 +75,3 @@ with open('tour_de_france_podatki.json', 'w') as f:
 # podatki = rezultati_posamezne_dirke(2000)
 # print(podatki.keys)
 
-# DOBIVANJE PODATKOV IZ POSAMEZNIH DIRK
