@@ -1,4 +1,3 @@
-## program ne dela
 
 import requests
 import re
