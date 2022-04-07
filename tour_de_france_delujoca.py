@@ -14,15 +14,19 @@ def dobi_info_staga(link):
     '''Vrne tekstovno informacijo strani o stagu.'''
     return requests.get(link).text
 
+def preveri(besedilo):
+    '''Preveri ali je ne obstaja stran.'''
+    izraz = '<title>Page not found.*</title>'
+    return len(re.findall(izraz, besedilo)) > 0
 
-izraz = '<title>Page not found.*</title>'
-
-link = 'https://www.procyclingstats.com/race/tour-de-france/1939/stage-2'
-response = requests.get(link)
-preveri = re.findall(izraz, response.text)
-if len(preveri) > 0:
-    stage_a = dobi_info_staga(link + 'a')
-    stage_b = dobi_info_staga(link + 'b')
+# izraz = '<title>Page not found.*</title>'
+# 
+# link = 'https://www.procyclingstats.com/race/tour-de-france/1939/stage-2'
+# response = requests.get(link)
+# preveri = re.findall(izraz, response.text)
+# if len(preveri) > 0:
+#     stage_a = dobi_info_staga(link + 'a')
+#     stage_b = dobi_info_staga(link + 'b')
 
 for leto in iskanje:
 
@@ -37,13 +41,17 @@ for leto in iskanje:
         # Za vsako leto preglej vse stage
         for trenutni_stage in range(1, st_stagov + 1):
             stage_link = f'{iskanje_po_letu}/stage-{trenutni_stage}'
-            response = requests.get(stage_link)
+            response = dobi_info_staga(stage_link)
 
-            preveri = re.findall(izraz, response.text)
-            if len(preveri) > 0:
-                stage_a = dobi_info_staga(link + 'a')
-                stage_b = dobi_info_staga(link + 'b')
-                print(f'Stage {trenutni_stage} a in b')
+#             preveri = re.findall(izraz, response.text)
+            if preveri(response):
+                stage_a = dobi_info_staga(stage_link + 'a')
+                stage_b = dobi_info_staga(stage_link + 'b')
+                stage_c = dobi_info_staga(stage_link + 'c')
+                if preveri(stage_c):
+                    print(f'Stage {trenutni_stage} a in b')
+                else:
+                    print(f'Stage {trenutni_stage} a, b in c')
             else:
                 print(f'Stage {trenutni_stage}')
 
