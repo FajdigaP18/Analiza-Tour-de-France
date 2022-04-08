@@ -20,34 +20,32 @@ def preveri(besedilo):
     izraz = '<title>Page not found.*</title>'
     return len(re.findall(izraz, besedilo)) > 0
 
-def slovar_kolesarjev(podatki):
-    '''Funkcija bo za vsako etapo/stage naredila slovar posameznih kolesarjev na etapi,
-    kateri ekipi pripadajo in kakšen je bil njihov zaostanek.'''
-    podatki = podatki.split('</tbody></table>') # ločimo različne tabele podatkov
-    danasnji = podatki[0]
+def razpolovi(niz):
+    '''Funkcija razpolovi dani niz in vrne prvo polovico niza.'''
+    dolzina = len(niz) // 2
+    return niz[:dolzina]
+
+def luscenje(tabela):
+    '''Funkcija vrne urejeno tabelo. (uvrstitev, ime_in_priimek, ekipa, starost, cas/zaostanek)'''
+    return [tabela[0]] + tabela[5:8] + [tabela[-4:]]
+#tabela[0]] + [tabela[2]] + tabela[4:7] + [tabela[-3]]  1., 3., 5., 6. 7. in 9.
+
+def tabela_kolesarjev(besedilo):
+    '''Funkcija vrne tabelo podatkov kolesarjev za etapo.'''
+    podatki = besedilo.split('</tbody></table>')[0]
     niz = r'<td>.*</a><span class="showIfMobile riderteam">.*</td>'
-    isci = re.findall(niz, danasnji)
-    slovar = {}
-    for kolesar in isci:
-        kolesar = kolesar.split('</td>')
-        tabela_kolesar = []
-        for podniz in kolesar:
+    isci = re.findall(niz, podatki)
+    tabela = []
+    for niz in isci:
+        niz = niz.split('</td>')
+        kolesar = []
+        for podniz in niz:
             zamenjava = re.sub('<.*?>', "", podniz).strip()
-            if len(zamenjava) == 0:
-                zamenjava = None
-                tabela_kolesar.append(None)
-                continue
-                zamenjava = None
-            tabela_kolesar.append(zamenjava)
-        #if tabela_kolesar[6] is None:
-        if tabela_kolesar[7] == None:
-            #tabela_kolesarjev.append(tabela_kolesar)
-            continue
-        else:
-            tabela_kolesar[5] = re.sub(tabela_kolesar[7], "", tabela_kolesar[5])
-        ime_kolesarja = tabela_kolesar.pop(5)
-        slovar[ime_kolesarja] = tabela_kolesar
-    return slovar
+            kolesar.append(zamenjava)
+        #print(kolesar)
+        kolesar = luscenje(kolesar)
+        tabela.append(kolesar)
+    return tabela
 
     
     
@@ -74,16 +72,16 @@ for leto in iskanje:
             stage_c = dobi_info_staga(stage_link + 'c')
             if preveri(stage_c):
                 print(f'Stage {trenutni_stage} a in b')
-#                     slovar_etap[str(trenutni_stage) + 'a'] = slovar_kolesarjev(stage_a)
-#                     slovar_etap[str(trenutni_stage) + 'b'] = slovar_kolesarjev(stage_b)
+#                     slovar_etap[str(trenutni_stage) + 'a'] = tabela_kolesarjev(stage_a)
+#                     slovar_etap[str(trenutni_stage) + 'b'] = tabela_kolesarjev(stage_b)
             else:
                 print(f'Stage {trenutni_stage} a, b in c')
-                slovar_etap[str(trenutni_stage) + 'c'] = slovar_kolesarjev(stage_c)
-            slovar_etap[str(trenutni_stage) + 'a'] = slovar_kolesarjev(stage_a)
-            slovar_etap[str(trenutni_stage) + 'b'] = slovar_kolesarjev(stage_b)
+                slovar_etap[str(trenutni_stage) + 'c'] = tabela_kolesarjev(stage_c)
+            slovar_etap[str(trenutni_stage) + 'a'] = tabela_kolesarjev(stage_a)
+            slovar_etap[str(trenutni_stage) + 'b'] = tabela_kolesarjev(stage_b)
         else:
             print(f'Stage {trenutni_stage}')
-            slovar_etap[trenutni_stage] = slovar_kolesarjev(response)
+            slovar_etap[trenutni_stage] = tabela_kolesarjev(response)
     slovar_tourov[leto] = slovar_etap
     
 #print(slovar_tourov)
