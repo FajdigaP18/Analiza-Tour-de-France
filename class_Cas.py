@@ -1,3 +1,4 @@
+
 import json
 
 class InvalidTimeException(Exception):
@@ -23,21 +24,9 @@ class Cas:
         self.sekunde = sekunde
         
     def __str__(self):
-#         if len(str(self.ure)) == 1:
-#             ura = str(self.ure)
-#         if len(str(self.minute)) == 1:
-#             self.minute = '0' + str(self.minute)
-#         if len(str(self.sekunde)) == 1:
-#             self.sekunde = '0' + str(self.sekunde)
         return "{}:{}:{}".format( self.ure, self.minute, self.sekunde)
     
     def __repr__(self):
-#         if len(str(self.ure)) == 1:
-#             self.ure = str(self.ure)
-#         if len(str(self.minute)) == 1:
-#             self.minute = '0' + str(self.minute)
-#         if len(str(self.sekunde)) == 1:
-#             self.sekunde = '0' + str(self.sekunde)
         return "Cas({}, {}, {})".format(self.ure, self.minute, self.sekunde)
     
     def __lt__(self, other):
@@ -66,7 +55,6 @@ class Cas:
     def __sub__(self, other): # od najvecjega odstejemo najmanj
         niz_1 = '{}:{}:{}'.format(self.ure, self.minute, self.sekunde)
         niz_2 = '{}:{}:{}'.format(other.ure, other.minute, other.sekunde)
-        #if je_manjsi(niz_1, niz_2):
         if self < other:
             raise Exception("Prvi cas je manjsi od drugega! Ne moremo imeti v negativen cas!!")
         else:
@@ -83,7 +71,4 @@ class Cas:
                 minute = self.minute - other.minute
             return Cas(ure, minute, sekunde)
 
-
-f = open('opis_etap.json')
-podatki = json.load(f)
 
