@@ -97,46 +97,4 @@ for leto in iskanje:
 with open('opis_etap.json', 'w') as f:
     json.dump(slovar_tourov , f)
 
-#######################################################################################
-# test = 'https://www.procyclingstats.com/race/tour-de-france/1999/stage-3'
-# etapa = requests.get(test).text
-# etapa = etapa.split('</tbody></table>')[-1]
-
-# hitrost = r'Avg. speed winner:</div> <div>\d*\.\d* km/h'
-# pot = r'Distance:\s*</div> <div>.* km'
-# profil = r'Parcours type:\s*</div> <div><span class="icon profile p\d"'
-# vertikalno = r'Vert. meters:</div> <div>\d*'
-# zacetek = r'Departure:</div> <div><a    href="location/.*">.*</a>'
-# konec = r'Arrival:</div> <div><a    href="location/.*">.*</a>'
-# zmaga_kako = r'Won how: </div> <div>.*'
-
-
-
-
-# v = re.findall(hitrost, etapa)[0].split('<div>')
-# v = v[-1][:-4].strip()
-# s = re.findall(pot, etapa)[0].split('<div>')[-1][:-3].strip()
-# pr = re.findall(profil, etapa)[0][-3:-1]
-# ver = re.findall(vertikalno, etapa)[0].split('<div>')
-# start = re.findall(zacetek, etapa)
-# start = re.sub('<.*?>', "", start[0])[10:].strip()
-# cilj = re.findall(konec, etapa)
-# cilj = re.sub('<.*?>', "", cilj[0])[8:].strip()
-# zmaga = re.findall(zmaga_kako, etapa)[0][:-11].split('<div>')[-1]
-
-# print(cilj)
-# 
-# 
-# if len(ver[-1]) == 0: ver = '/'
-# else: int(ver[-1])
-#print(ver)
-
-
-# print('{:<30s} | {} km/h'.format("Povprečna hitrost zmagovalca", v))
-# print('{:<30s} | {} km'.format("Razdalja", s))
-# print('{:<30s} | {:s}'.format("Profil", pr))
-# print('{:<30s} | {}'.format("Vertikalni metri", ver))
-# print('{:<30s} | {}'.format("Start", start))
-# print('{:<30s} | {}'.format("Cilj", cilj))
-# print('{:<30s} | {}'.format("Kakšna je bila zmaga", zmaga))
 

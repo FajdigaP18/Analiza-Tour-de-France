@@ -75,6 +75,6 @@ for leto in iskanje:
 
 print(slovar_zmagovalcev['1987'])
 # 
-# with open('zmagovalci_podatki.json', 'w') as f:
-#      json.dump(slovar, f)        
+with open('zmagovalci_podatki.json', 'w') as f:
+    json.dump(slovar_zmagovalcev, f)        
         

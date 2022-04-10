@@ -63,8 +63,12 @@ for leto in iskanje:
     slovar_etap = {}
     # Za vsako leto preglej vse stage
     for trenutni_stage in range(1, st_stagov + 1):
+        if int(leto) == 1998 and trenutni_stage == 17:
+            continue
         stage_link = f'{iskanje_po_letu}/stage-{trenutni_stage}'
         response = dobi_info_staga(stage_link)
+#         if int(leto) == 1998 and trenutni_stage == 17:
+#             continue
 
 #             preveri = re.findall(izraz, response.text)
         if preveri(response):
