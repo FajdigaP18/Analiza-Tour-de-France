@@ -1,4 +1,5 @@
-
+import matplotlib
+import matplotlib.pyplot as plt
 import json
 
 e = open('opis_etap.json')
@@ -16,3 +17,42 @@ for kljuc in podatki:
         slovar_najvisjih_povp_hitrosti[kljuc].append(podatki[kljuc][podkljuc][0])
         
 print(slovar_najvisjih_povp_hitrosti)
+
+for kljuc in podatki:
+    for podkljuc in podatki[kljuc]:
+        slovar_najvisjih_povp_hitrosti[kljuc].append(podatki[kljuc][podkljuc][0])
+        
+print(slovar_najvisjih_povp_hitrosti)
+
+
+leto_1 = '1999'
+hitrosti_1 = []
+for v in slovar_najvisjih_povp_hitrosti[leto_1]:
+    v = float(v[:-4])
+    hitrosti_1.append(v)
+
+st_etap_1 = []
+for i in range(len(hitrosti_1)):
+    st_etap_1.append(i)
+
+leto_2 = '2021'
+hitrosti_2 = []
+for v in slovar_najvisjih_povp_hitrosti[leto_2]:
+    v = float(v[:-4])
+    hitrosti_2.append(v)
+
+st_etap_2 = []
+for i in range(len(hitrosti_2)):
+    st_etap_2.append(i)
+
+plt.plot(st_etap_1, hitrosti_1, label = leto_1)
+plt.plot(st_etap_2, hitrosti_2, label = leto_2)
+plt.xlabel('Etape')
+plt.ylabel('Povprecne hitrosti')
+plt.title(f'Primerjava povprecnih hitrosti leta {leto_1} in {leto_2}')
+plt.legend()
+plt.show()
+plt.savefig("primerjava_povprečnih_hitrosti.pdf")#, bbox_inches = 'tight')
+plt.close()
+
+e.close()
