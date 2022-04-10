@@ -6,7 +6,7 @@
 # p4 - gorska 2-kategorije ali gorska-hribovska
 # p5 - gorska 1-kategorije ali gorska
 ########################################################
-
+import matplotlib.pyplot as plt
 import json
 
 e = open('opis_etap.json')
@@ -46,22 +46,21 @@ for letnica in slovar_tipov_etap:
     slovar_najbolj_pogostih_etap[letnica] = najbolj_pogosta_etapa(slovar_tipov_etap[letnica])
     
   
-print(slovar_najbolj_pogostih_etap)
 
 
+slovar_stevil_tipov_etap = {'p0': 0, 'p1': 0, 'p2': 0, 'p3': 0, 'p4': 0, 'p5': 0}
 
+for tip_etape in slovar_najbolj_pogostih_etap.values():
+    slovar_stevil_tipov_etap[tip_etape] += 1
+    
+teren = list(slovar_stevil_tipov_etap.keys())
+pogostost = list(slovar_stevil_tipov_etap.values())
 
-
-
-
-
-
-
-
-
-
-
-
+plt.bar(teren, pogostost)
+plt.title("Pogostost tipa etap")
+plt.xlabel("Oznaka najpogostejše etape")
+plt.ylabel("Število pojavitev")
+plt.show()
 
 
 
