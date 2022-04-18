@@ -18,6 +18,8 @@ Pri projektu smo uporabljali računalniški program Python.
 2. Analiza posameznih turov: analiza etap (razdeljene na 3 kategorije:cestne, hribovsek in gorske), povprečne hitreosti, zmagovalci posameznih etap
 3. Primerjava dirk med seboj
 
+## Kratka predstavitev projekta:
+Link: https://youtu.be/AayvC07TjcQ
 
 ## Člana razvoja projekta:
 Žiga Valič in Polona Fajdiga
